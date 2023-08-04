@@ -3,6 +3,7 @@ package org.aluve.steps;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -28,7 +29,7 @@ public class FinanceSolutionsSteps {
         driver.get("https://www.wesbank.co.za/home/calculate");
         financeSolutionsPage = new FinanceSolutionsPage(driver);
     }
-    @When("the user purchases a vehicle of price {string}")
+    @Given("the user purchases a vehicle of price {string}")
     public void theUserPurchasesAVehicleOfPrice(String price) {
         financeSolutionsPage.enterPrice(price);
         
