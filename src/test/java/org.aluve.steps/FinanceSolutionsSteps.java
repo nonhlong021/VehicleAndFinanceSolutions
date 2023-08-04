@@ -1,5 +1,6 @@
 package org.aluve.steps;
 
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -58,5 +59,10 @@ public class FinanceSolutionsSteps {
     public void theMonthlyRepaymentIs(String monthlyReturn) {
         boolean isMonthlyRetun = financeSolutionsPage.isMonthlyReturnEqualTo(monthlyReturn);
         assertTrue(isMonthlyRetun);
+    }
+
+    @After
+    public void tearDown(){
+        driver.quit();
     }
 }
