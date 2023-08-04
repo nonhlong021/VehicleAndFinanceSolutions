@@ -38,7 +38,7 @@ public class FinanceSolutionsPage {
 
     public void selectPaymentTerm(String term){
         Select select = (Select) driver.findElement((By) driver.findElement(By.xpath("//select")));
-        select.selectByIndex(4);
+        select.selectByValue(term);
     }
     public void addBalloonPercent(String balloon){
         driver.findElement(byBallonPercentage).click();
