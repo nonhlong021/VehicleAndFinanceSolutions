@@ -2,6 +2,7 @@ package org.aluve;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,7 +18,7 @@ public class FinanceSolutionsPage {
 
     By byVehiclePurchasePrice = By.xpath("//input[@class='input-field-input']");
     By byDeposit = By.xpath("//wol-ranger[@formcontrolname='deposit']//label//following::div[1]");
-    By byPaymentTerm = By.xpath("//select");
+    By byPaymentTerm = By.xpath("//select[@class='wb-native-select-element']");
     By byBallonPercentage = By.xpath("//wol-ranger[@type='percent']//div[@class='wol-slider-range']//preceding-sibling::div//div[1]");
 
     By byInterestRate = By.xpath("(//div[@class='wol-slider-manual'])[3]");
@@ -37,8 +38,9 @@ public class FinanceSolutionsPage {
     }
 
     public void selectPaymentTerm(String term){
-        Select select = (Select) driver.findElement((By) driver.findElement(By.xpath("//select")));
-        select.selectByValue(term);
+        WebElement selectElement = driver.findElement(byPaymentTerm);
+        Select select = new Select(selectElement);
+        select.selectByVisibleText(term);
     }
     public void addBalloonPercent(String balloon){
         driver.findElement(byBallonPercentage).click();
